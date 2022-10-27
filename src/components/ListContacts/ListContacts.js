@@ -1,12 +1,25 @@
 import { Contact } from 'components/Contact/Contact';
+import { ContactList } from './ListContacts.styled';
+
+import PropTypes from 'prop-types';
 
 export function ListContacts({ filtredContacts, delContact }) {
   if (filtredContacts.length === 0) return <p>NOTHING IS FOUND</p>;
   return (
-    <ul>
+    <ContactList>
       {filtredContacts.map(el => (
         <Contact key={el.id} element={el} delContact={delContact} />
       ))}
-    </ul>
+    </ContactList>
   );
 }
+
+
+ListContacts.propTypes = {
+  filtredContacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  delContact: PropTypes.func.isRequired,
+};

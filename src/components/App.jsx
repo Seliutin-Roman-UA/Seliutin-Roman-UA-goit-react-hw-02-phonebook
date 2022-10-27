@@ -5,6 +5,8 @@ import { ContactForm } from './ContactForm/ContactForm ';
 import { Filter } from './Filter/Filter';
 import { ListContacts } from './ListContacts/ListContacts';
 
+import { PhoneBook } from './App.styled';
+
 export class App extends Component {
   state = {
     contacts: [
@@ -56,7 +58,7 @@ export class App extends Component {
     );
 
     return (
-      <div>
+      <PhoneBook>
         <h1>Phonebook</h1>
         <ContactForm addContact={this.addContact} />
         <h2>Contacts</h2>
@@ -69,7 +71,7 @@ export class App extends Component {
           filtredContacts={filtredContacts}
           delContact={this.delContact}
         />
-      </div>
+      </PhoneBook>
     );
   }
 }
