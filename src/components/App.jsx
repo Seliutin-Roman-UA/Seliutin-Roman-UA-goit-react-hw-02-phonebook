@@ -19,27 +19,22 @@ export class App extends Component {
   };
 
   addContact = newContact => {
+    //ХОЧУ ЗНАТЬ ЧЕМ КОД В КОММЕНТАХ ЛУЧШЕ????? В НЕМ ЕСТЬ ТОЖЕ НЕДОСТАТКИ КАК И В МОЕМ. Я ВЫБИРАЮ СВОЙ ВАРИАНТ
     const { name, number } = newContact;
+    //------------------- строка выше отсутствует
     if (this.state.contacts.some(el => el.name === name)) {
+      // if (this.state.contacts.some(el => el.name === newContact.name))
       alert(`${name} is already in contacts`);
+      // alert(`${newContact.name} is already in contacts`);
       return;
     }
     const id = nanoid(8);
-    this.setState(
-      state => {
-        return {
-          contacts: [
-            ...state.contacts,
-            {
-              id: id,
-              name,
-              number,
-            },
-          ],
-        };
-      },
-      () => console.log(this.state)
-    );
+    //------------------- строка выше отсутствует
+    //newContact.id = nanoid(8); вы этого не предлагали, предлагали что то в что то распаковывать, но я сделяю вид что вы это предложили
+    this.setState(state => {
+      return { contacts: [...state.contacts, { id, name, number }] };
+      //return { contacts: [...state.contacts, newContact}] };
+    });
   };
 
   delContact = id => {
@@ -48,7 +43,7 @@ export class App extends Component {
     }));
   };
   setFilter = event => this.setState({ filter: event.currentTarget.value });
-  clearFilter = () => this.setState({ filter: "" });
+  clearFilter = () => this.setState({ filter: '' });
 
   render() {
     const { contacts } = this.state;

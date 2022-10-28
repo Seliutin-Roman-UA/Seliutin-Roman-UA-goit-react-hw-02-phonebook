@@ -14,12 +14,13 @@ export function ListContacts({ filtredContacts, delContact }) {
   );
 }
 
-
 ListContacts.propTypes = {
   filtredContacts: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-    })
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    }).isRequired
   ).isRequired,
   delContact: PropTypes.func.isRequired,
 };
